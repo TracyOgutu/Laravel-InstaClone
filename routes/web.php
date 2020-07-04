@@ -26,7 +26,10 @@ Route::POST('/p','PostsController@store');
 Route::get('/p/create','PostsController@create');
 //showing a single user's profile
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+//Shows the edit form
 Route::get('/profile/{user}/edit','ProfilesController@edit')->name('profile.edit');
+//Updates the record
+Route::patch('/profile/{user}','ProfilesController@update')->name('profile.update');
 
 // Auth::routes();
 
