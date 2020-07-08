@@ -41,6 +41,7 @@ class ProfilesController extends Controller
             //using public_path helper to get the image path
             $image=Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
             $image->save();
+            $imageArray= ['image'=>$imagePath];
     
         }
          //only the authenticated user can update the profile
@@ -48,7 +49,7 @@ class ProfilesController extends Controller
          // up the image Path instead of the second array
          $user->profile->update(array_merge(
              $data,
-             ['image'=>$imagePath],
+             $imageArray ?? []
          ));
 
         return redirect("/profile/{$user->id}");
