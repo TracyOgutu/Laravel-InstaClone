@@ -9,7 +9,13 @@ class Profile extends Model
     //disables mass assignment
     protected $guarded =[];
 
-    public function user(){
+    //displaying the image if set else display the default image
+    public function profileImage(){
+        $imagePath=($this->image) ? $this->image: '/profile/vnFdE8n9IJXhLnfoQBjNqboAXGrMSEUJ5xA8dZbx.png';
+        return'/storage/' .$imagePath;
+    }
+
+    public function user(){ 
         return $this->belongsTo(User::class);
     }
 }
