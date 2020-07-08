@@ -22,9 +22,12 @@ Route::get('/', function () {
 Auth::routes();
 
 
+
 Route::POST('/p','PostsController@store');
 Route::get('/p/create','PostsController@create');
 Route::GET('/p/{post}','PostsController@show');
+
+Route::POST('follow/{user}','FollowsController@store');
 //showing a single user's profile
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 //Shows the edit form
